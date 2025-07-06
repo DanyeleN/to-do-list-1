@@ -20,7 +20,7 @@ input.addEventListener('keypress', function(event) {
 });
 
 function adicionarTarefa() {
-    if (input.value != '') {
+    if (input.value.trim() !== '') {
         let novaTarefa = document.createElement('p');
         campoTarefas.appendChild(novaTarefa);
 
@@ -45,10 +45,15 @@ function adicionarTarefa() {
             }
         });
 
-        // Evento para remover a tarefa clicando na lixeira.
-        novaTarefa.addEventListener('dblclick', function(){
-            campoTarefas.removeChild(novaTarefa);
+        // Adicionar ícone de lixeira
+        let lixeira = document.createElement('span');
+        lixeira.innerText = '🗑️';
+        lixeira.style.cursor = 'pointer';
+        novaTarefa.appendChild(lixeira);
+        // Evento para apagar a tarefa ao clicar na lixeira
+        lixeira.addEventListener('click', function () {
+        campoTarefas.removeChild(novaTarefa);
         });
-    }
-}
-// test
+        
+};
+};
